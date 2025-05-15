@@ -1,5 +1,5 @@
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,63 +13,91 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          child: Container(
-            width: 145,
-            height: 184,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xff9c2cf3), Color(0xff3a49f9)],
-              ),
-              borderRadius: BorderRadius.circular(35),
-            ),
+        appBar: AppBar(),
+        backgroundColor: Colors.white,
+        body: Scrollbar(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SvgPicture.asset(
-                  "assets/svgs/Logo.svg",
-                  color: Colors.white.withOpacity(0.2),
-                ),
-                SizedBox(height: 35),
-
-                Text(
-                  "Cedit Card",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white.withOpacity(0.5),
+                Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: Text(
+                    "Welcome \nBack!",
+                    style: TextStyle(
+                      fontFamily: "assets/fonts/static/Montserrat-Regular.ttf",
+                      fontSize: 43,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
-                SizedBox(height: 15),
-                Row(
-                  spacing: 4,
-                  children: [
-                    SvgPicture.asset("assets/svgs/Ellipse 4.svg"),
-                    SvgPicture.asset("assets/svgs/Ellipse 4.svg"),
-                    SvgPicture.asset("assets/svgs/Ellipse 4.svg"),
-                    SvgPicture.asset("assets/svgs/Ellipse 4.svg"),
-                    SizedBox(width: 10),
-                    Text("1289", style: TextStyle(color: Colors.white)),
-                  ],
+                SizedBox(height: 25),
+                containers("assets/svgs/User.svg", "Username or Email"),
+                SizedBox(height: 25),
+                containers(
+                  "assets/svgs/Group 2.svg",
+                  "Password",
+                  "assets/svgs/eye.svg",
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "ForgotPassword?",
+                        style: TextStyle(color: Colors.red, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 25),
+                  width: 317,
+                  height: 55,
+                  decoration: BoxDecoration(color: Colors.red),
+                  child: Center(
+                    child: Text(
+                      "Login",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
                 ),
                 SizedBox(height: 10),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 100),
+                  child: Column(
                     children: [
-                      Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,borderRadius: BorderRadius
-                              .circular(3)
+                      Text("- Qr Continue with -"),
+                      SizedBox(height: 8),
+                      Image.asset("assets/images/Buttons.png"),
+                      SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              "Create An Account",
+                              style: TextStyle(fontSize: 9),
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                          width: 22,
-                          height: 15,
-                          child:
-                          SvgPicture.asset("assets/svgs/Group.svg")
+
+                          Expanded(
+                            child: Text(
+                              "Sign Up",
+                              style: TextStyle(fontSize: 9, color: Colors.red),
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text("09/25",style: TextStyle(fontSize: 11,color:Colors
-                          .white))
-                    ]
-                )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -77,4 +105,27 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+Container containers(String user, String username, [String eye = ""]) {
+  return Container(
+    margin: EdgeInsets.only(left: 25),
+    width: 317,
+    height: 55,
+    decoration: BoxDecoration(
+      color: Color(0xffA8A8A9).withOpacity(0.5),
+      borderRadius: BorderRadius.circular(15),
+    ),
+    child: Row(
+      children: [
+        SizedBox(width: 20),
+        SvgPicture.asset(user),
+        SizedBox(width: 10),
+        Expanded(child: Text(username, overflow: TextOverflow.ellipsis)),
+        Spacer(),
+        if (eye.isNotEmpty) SvgPicture.asset(eye),
+        SizedBox(width: 15),
+      ],
+    ),
+  );
 }

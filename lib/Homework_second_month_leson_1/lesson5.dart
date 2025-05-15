@@ -1,75 +1,75 @@
 // 1 task
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Container(
-            width: 315,
-            height: 184,
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [Color(0xff9c2cf3),Color
-                (0xff3a49f9)]),
-              borderRadius: BorderRadius.circular(35),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Current Balance",
-                          style: TextStyle(color: Colors.white.withOpacity(0.5),
-                              fontSize:
-                              14),
-                        ),
-                        SizedBox(height: 5),
-                        Text("\$5,750,20",style:TextStyle(color: Colors
-                            .white,fontSize: 28)),
-                      ],
-                    ),
-
-                    Column(
-                      children: [
-                        SvgPicture.asset("assets/svgs/mastercard_logo.svg",),
-                      ],
-                    ),
-                  ],
-                ),
-                Row
-
-                  (
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:[
-                      Text("5282 3456 7890 1289",style: TextStyle(fontSize:14,
-                          color:Colors.white)),
-                      Text("09/25",style: TextStyle(fontSize: 14,color: Colors.white))
-                    ])
-              ],
-
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+// import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter/material.dart';
+//
+// void main() {
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: Scaffold(
+//         body: Center(
+//           child: Container(
+//             width: 315,
+//             height: 184,
+//             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+//             decoration: BoxDecoration(
+//               gradient: LinearGradient(colors: [Color(0xff9c2cf3),Color
+//                 (0xff3a49f9)]),
+//               borderRadius: BorderRadius.circular(35),
+//             ),
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 Row(
+//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                   children: [
+//                     Column(
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       children: [
+//                         Text(
+//                           "Current Balance",
+//                           style: TextStyle(color: Colors.white.withOpacity(0.5),
+//                               fontSize:
+//                               14),
+//                         ),
+//                         SizedBox(height: 5),
+//                         Text("\$5,750,20",style:TextStyle(color: Colors
+//                             .white,fontSize: 28)),
+//                       ],
+//                     ),
+//
+//                     Column(
+//                       children: [
+//                         SvgPicture.asset("assets/svgs/mastercard_logo.svg",),
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//                 Row
+//
+//                   (
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children:[
+//                       Text("5282 3456 7890 1289",style: TextStyle(fontSize:14,
+//                           color:Colors.white)),
+//                       Text("09/25",style: TextStyle(fontSize: 14,color: Colors.white))
+//                     ])
+//               ],
+//
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 // second
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:flutter/material.dart';
