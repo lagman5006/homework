@@ -68,9 +68,15 @@ flutter:
      - assets/fonts/
 
   fonts:
-    - family: Montserrat
+    - family: Kufam
       fonts:
-        - asset: assets/fonts/static/Montserrat-Regular.ttf
+        - asset: assets/fonts/Kufam/static/Kufam-Regular.ttf
+    - family: PlayfairDisplay
+      fonts:
+        - asset: assets/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf
+
+
+
 
 
 

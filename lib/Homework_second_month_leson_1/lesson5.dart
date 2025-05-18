@@ -306,7 +306,5 @@
 //     );
 //   }
 // }
-Image.asset("assets/images/visa.png"),
-Spacer(),
-Text("**********2109")
+
 
