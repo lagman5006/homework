@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:new_project_day1/my_app_container.dart';
 import 'package:new_project_day1/utils/app_colors.dart';
 import 'package:new_project_day1/utils/app_fonts.dart';
 import 'package:new_project_day1/utils/app_media.dart';
@@ -35,24 +36,7 @@ class MyApp extends StatelessWidget {
                         ],
                       ),
                       Spacer(),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
-                        alignment: Alignment.center,
-                        width: 60,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          color: appColors.mainColor,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          spacing: 2,
-                          children: [
-                            SizedBox(width: 2),
-                            Icon(Icons.diamond_outlined, size: 15),
-                            buildHeader(text: "160", fontSize: 10),
-                          ],
-                        ),
-                      ),
+                      MyAppContainer(),
                     ],
                   ),
                 ),
@@ -195,19 +179,38 @@ class MyApp extends StatelessWidget {
                     ),
                   ],
                 ),
-                verticalContainers(appImage.html, "HTML", "30 Question",
-                    appImage.Image2630Image),
-                verticalContainers(appImage.javascriptImage, "JAVASCRIPT", "30 "
-                    "Question",
-                    appImage.Image2030Image),
-                verticalContainers(appImage.rejactImage, "REACT", "30 Question",
-                    appImage.Image2530Image),
-                verticalContainers(appImage.cImage, "C++", "30 Question",
-                    appImage.Image2730Image),
-                verticalContainers(appImage.pythonImage, "PYTHON", "30 "
-                    "Question",
-                    appImage.Image2230Image),
-
+                verticalContainers(
+                  appImage.html,
+                  "HTML",
+                  "30 Question",
+                  appImage.Image2630Image,
+                ),
+                verticalContainers(
+                  appImage.javascriptImage,
+                  "JAVASCRIPT",
+                  "30 "
+                      "Question",
+                  appImage.Image2030Image,
+                ),
+                verticalContainers(
+                  appImage.rejactImage,
+                  "REACT",
+                  "30 Question",
+                  appImage.Image2530Image,
+                ),
+                verticalContainers(
+                  appImage.cImage,
+                  "C++",
+                  "30 Question",
+                  appImage.Image2730Image,
+                ),
+                verticalContainers(
+                  appImage.pythonImage,
+                  "PYTHON",
+                  "30 "
+                      "Question",
+                  appImage.Image2230Image,
+                ),
               ],
             ),
           ),
@@ -254,11 +257,13 @@ Container horizontalContainer(String icon) {
   );
 }
 
-Container verticalContainers(String icon,
-    String text,String text2,String image
-    ){
-  return
-  Container(
+Container verticalContainers(
+  String icon,
+  String text,
+  String text2,
+  String image,
+) {
+  return Container(
     width: 328,
     height: 58,
     decoration: BoxDecoration(

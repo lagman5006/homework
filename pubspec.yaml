@@ -71,6 +71,11 @@ flutter:
     - family: Kufam
       fonts:
         - asset: assets/fonts/Kufam/static/Kufam-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Kufam/static/Kufam-Bold.ttf
+          weight: 700
+
+
     - family: PlayfairDisplay
       fonts:
         - asset: assets/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf
