@@ -1,10 +1,20 @@
-import 'package:cinemax/cure/utils/app_colors.dart';
 import 'package:cinemax/cure/utils/app_media.dart';
+import 'package:cinemax/data.dart';
+import 'package:cinemax/models/product_model.dart';
+import 'package:cinemax/pages/question_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Test1 extends StatelessWidget {
-  const Test1({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<CategoryModel> categories = questionsData
+      .map((categories) => CategoryModel.fromjeson(categories))
+      .toList();
 
   @override
   Widget build(BuildContext context) {
@@ -13,434 +23,265 @@ class Test1 extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Row(
-          spacing: 10.sp,
+          spacing: 10,
           children: [
-            Icon(Icons.arrow_back_ios_outlined),
-            SizedBox(width: 70.w),
-            Text("Codefive"),
-            Icon(Icons.check_circle, color: Colors.blue),
+            Icon(Icons.person),
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Rahmatulloh", style: TextStyle(fontSize: 15)),
+                  Text("ID- 32162", style: TextStyle(fontSize: 15)),
+                ],
+              ),
+            ),
             Spacer(),
-            Icon(Icons.notifications_none),
-            Icon(Icons.more_horiz),
+            Container(
+              decoration: BoxDecoration(
+                color: Color(0xFF4EA4FF),
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 5,
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(AppSvgs.diamondImage, width: 15, height: 15),
+                    Text("180", style: TextStyle(fontSize: 15)),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 20.h),
-          child: Column(
-            spacing: 5,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    child: Image.asset(AppSvgs.picture5Image),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            Container(
+              width: 380,
+              height: 160,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7),
+                image: DecorationImage(
+                  image: AssetImage(AppSvgs.cupImage),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                    Color(0xFF15376B),
+                    BlendMode.color,
                   ),
-                  SizedBox(width: 30),
-                  Column(
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
+                child: Column(
+                  spacing: 10,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Test Your Knowledge with\n Quizzes",
+                      style: TextStyle(
+                        fontFamily: "PlayfairDisplay",
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      "You're just looking for a playful way to learn\n"
+                      "new facts, our quizzes are designed to\n"
+                      "entertain and educate.",
+                      style: TextStyle(color: Colors.white, fontSize: 10),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          "Play Now",
+                          style: TextStyle(
+                            color: Color(0xFF15376B),
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Row(
+              spacing: 5,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  width: 350,
+                  height: 40,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [Text("Search"), Spacer(), Icon(Icons.search)],
+                    ),
+                  ),
+                ),
+                Icon(Icons.settings),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(children: [Text("Categories", style: TextStyle(fontSize: 15))]),
+            SizedBox(
+              width: double.infinity,
+              height: 90,
+
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  final category = categories[index];
+                  return Column(
                     children: [
-                      Row(
-                        spacing: 45.sp,
-                        children: [
-                          Text(
-                            "6956",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "27,7m",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "219",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Row(
+                          children: [
+                            Image.network(
+                              width: 50,
+                              height: 50,
+                              category.categoryImage,
+                            ),
+                          ],
+                        ),
                       ),
                       Row(
-                        spacing: 15,
                         children: [
                           Text(
-                            "Publicacoes",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Seguidores",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "A suguir",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            category.category,
+                            style: TextStyle(fontSize: 10),
                           ),
                         ],
                       ),
                     ],
-                  ),
-                ],
+                  );
+                },
               ),
-              Text("Codefive"),
-              Text(
-                "Agenica",
-                style: TextStyle(color: AppColors.whiteGreyColor),
-              ),
-              Text(
-                "O seu site de sonhos ,esta no sitio certo 📺 \n codefive.pt",
-              ),
-              Row(
-                children: [
-                  CircleAvatar(
-                    radius: 20.r,
-                    backgroundColor: Colors.blue,
-                    child: ClipOval(
-                      child: Image.asset(
-                        AppSvgs.picture2Image,
-                        fit: BoxFit.cover,
-                        width: 60.w,
-                        height: 60.h,
-                      ),
-                    ),
-                  ),
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Colors.blue,
-                    child: ClipOval(
-                      child: Image.asset(
-                        AppSvgs.picture3Image,
-                        fit: BoxFit.cover,
-                        width: 60.w,
-                        height: 60.w,
-                      ),
-                    ),
-                  ),
-                  CircleAvatar(
-                    radius: 20.r,
-                    backgroundColor: Colors.blue,
-                    child: ClipOval(
-                      child: Image.asset(
-                        AppSvgs.picture4Image,
-                        fit: BoxFit.cover,
-                        width: 60.w,
-                        height: 60.w,
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10.w),
-                  RichText(
-                    text: TextSpan(
-                      text: "Seguido por",
-                      style: TextStyle(
-                        color: AppColors.whiteGreyColor,
-                        fontSize: 10,
-                      ),
-                      children: [
-                        TextSpan(
-                          text:
-                              "joaocorreia09, vanda.carvalho e\n 16 outros amigos",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+            ),
+            Row(
+              children: [
+                Text(
+                  "Recent Activity",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 370,
+              child: ListView.builder(
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  final category = categories[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QuestionPage(category: category ), // Replace with your screen
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                    ),
-                    child: Text(
-                      "Seguir",
-                      style: TextStyle(color: AppColors.whiteColor),
-                    ),
-                  ),
-                  OutlinedButton(onPressed: () {}, child: Text("Mensagem")),
-                  OutlinedButton(onPressed: () {}, child: Text("Contactar")),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.whiteGreyColor.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-
+                      );
+                    },
+                    child: Card(
+                      color: Colors.white,
+                      elevation: 4, // Adds a slight shadow effect
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                       child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Icon(Icons.person_add),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Hero(
+                              tag: category.categoryImage.toString(),
+                              child: Image.network(
+                                category.categoryImage,
+                                width: 50,
+                                height: 50,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  category.category,
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                                Text(
+                                  "30 Questions",
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ],
+                            ),
+                            Spacer(),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                CircularProgressIndicator(
+                                  value: 0.75,
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: 33,
+                                  height: 33,
+                                  decoration: BoxDecoration(
+                                    color: Colors.amber,
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: Text(
+                                    "25/30",
+                                    style: TextStyle(fontSize: 10),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  spacing: 10.sp,
-                  children: [
-                    Column(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.lightbulb_outline,
-                                size: 40,
-                                color: Colors.yellowAccent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text("Design Tips", style: TextStyle(fontSize: 16)),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.cases_outlined,
-                                size: 40,
-                                color: Colors.yellowAccent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text("Portfolio", style: TextStyle(fontSize: 16)),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.grid_view_rounded,
-                                size: 40,
-                                color: Colors.yellowAccent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text("Resources", style: TextStyle(fontSize: 16)),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.ads_click_outlined,
-                                size: 40,
-                                color: Colors.yellowAccent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text("UI Basics", style: TextStyle(fontSize: 16)),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.web,
-                                size: 40,
-                                color: Colors.yellowAccent,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text("Web Design", style: TextStyle(fontSize: 16)),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 450.h,
-                child: GridView(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 5
-                  ),
-                  scrollDirection: Axis.vertical,
-
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture4Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture3Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture1Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture2Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture4Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture3Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture1Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture2Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture4Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture3Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture1Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture2Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture4Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture3Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture1Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppSvgs.picture2Image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            )
+          ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.apps_outlined),
+            label: "categories",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: "favorite",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_2_outlined),
+            label: "profile",
+          ),
+        ],
       ),
     );
   }

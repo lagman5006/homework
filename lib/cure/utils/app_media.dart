@@ -16,5 +16,7 @@ class AppSvgs {
   static final String picture3Image = "$_mainpicture/picture3.jpg";
   static final String picture4Image = "$_mainpicture/picture4.jpg";
   static final String picture5Image = "$_mainpicture/image.jpg";
+  static final String diamondImage = "$_mainpicture/diamond.png";
+  static final String cupImage = "$_mainpicture/cup.jpg";
 
 }

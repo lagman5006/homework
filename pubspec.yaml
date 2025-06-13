@@ -81,6 +81,11 @@ flutter:
      - family: Montserrat
        fonts:
          - asset: assets/fonts/Montserrat/static/Montserrat-Regular.ttf
+
+     - family: PlayfairDisplay
+       fonts:
+        - asset: assets/fonts/PlayfairDisplay/static/PlayfairDisplay-Regular.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

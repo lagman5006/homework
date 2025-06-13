@@ -16,7 +16,7 @@ class MyCinemax extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: Test1());
+            home: HomePage());
       },
     );
   }
