@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 class QuestionModel {
   final int id;
   final String title;
-  final String correctAnswer;
+  final int correctAnswer;
   final List<String> answers;
 
   QuestionModel({

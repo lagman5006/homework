@@ -13,7 +13,7 @@ class CategoryModel {
     required this.questions,
   });
 
-  factory CategoryModel.fromjeson(Map<String, dynamic> json){
+  factory CategoryModel.fromJson(Map<String, dynamic> json){
     return CategoryModel(category: json["category"],
       categoryImage: json["category_image"],
       questions: (json["questions"] as List<Map<String, dynamic>>)

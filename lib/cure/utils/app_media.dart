@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppSvgs {
+class Appmedia {
   static final String _mainSvg = "assets/svgs";
   static final String cinemaxSvg = "$_mainSvg/cinemax.svg";
   static final String googleSvg = "$_mainSvg/google.svg";

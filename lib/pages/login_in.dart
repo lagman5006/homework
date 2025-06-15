@@ -26,7 +26,7 @@ class LoginIn extends StatelessWidget {
         spacing: 15,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(AppSvgs.cinemaxSvg),
+          SvgPicture.asset(Appmedia.cinemaxSvg),
 
           Text(
             "CINEMAX",
@@ -89,9 +89,9 @@ class LoginIn extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 25,
             children: [
-              IconButton(onPressed: _launchUrl, icon: SvgPicture.asset(AppSvgs.googleSvg),),
-              SvgPicture.asset(AppSvgs.appleSvg),
-              SvgPicture.asset(AppSvgs.facebookSvg),
+              IconButton(onPressed: _launchUrl, icon: SvgPicture.asset(Appmedia.googleSvg),),
+              SvgPicture.asset(Appmedia.appleSvg),
+              SvgPicture.asset(Appmedia.facebookSvg),
             ],
           )
         ],

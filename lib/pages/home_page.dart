@@ -5,7 +5,7 @@ import 'package:cinemax/pages/question_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<CategoryModel> categories = questionsData
-      .map((categories) => CategoryModel.fromjeson(categories))
+      .map((categories) => CategoryModel.fromJson(categories))
       .toList();
 
   @override
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Row(
                   children: [
-                    Image.asset(AppSvgs.diamondImage, width: 15, height: 15),
+                    Image.asset(Appmedia.diamondImage, width: 15, height: 15),
                     Text("180", style: TextStyle(fontSize: 15)),
                   ],
                 ),
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7),
                 image: DecorationImage(
-                  image: AssetImage(AppSvgs.cupImage),
+                  image: AssetImage(Appmedia.cupImage),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
                     Color(0xFF15376B),
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                   width: 350,
                   height: 40,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Row(
                       children: [Text("Search"), Spacer(), Icon(Icons.search)],
                     ),
@@ -156,10 +156,20 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.all(10.0),
                         child: Row(
                           children: [
-                            Image.network(
+                            Container(
                               width: 50,
                               height: 50,
-                              category.categoryImage,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.grey.withValues(alpha: 0.3),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.network(
+                                    width: 40,
+                                    height: 40,
+                                    category.categoryImage),
+                              ),
                             ),
                           ],
                         ),
@@ -197,14 +207,18 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QuestionPage(category: category ), // Replace with your screen
+                          builder: (context) => QuestionPage(
+                            category: category,
+                          ), // Replace with your screen
                         ),
                       );
                     },
                     child: Card(
                       color: Colors.white,
                       elevation: 4, // Adds a slight shadow effect
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -235,9 +249,7 @@ class _HomePageState extends State<HomePage> {
                             Stack(
                               alignment: Alignment.center,
                               children: [
-                                CircularProgressIndicator(
-                                  value: 0.75,
-                                ),
+                                CircularProgressIndicator(value: 0.75),
                                 Container(
                                   alignment: Alignment.center,
                                   width: 33,
@@ -260,7 +272,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
